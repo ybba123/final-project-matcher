@@ -100,7 +100,7 @@ def main():
                 #     {'name':'d', 'hate':[], 'topics':['networks','garbage collection'], 'times':['Monday morning']},
                 #    {'name':'e', 'hate':[], 'topics':['networks','garbage collection'], 'times':['Monday morning']},
                 #    {'name':'f', 'hate':[], 'topics':['networks'], 'times':['Friday morning']}
-    
+                
     # for student in preferences:
     s = Solver()
 
