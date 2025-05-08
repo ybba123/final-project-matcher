@@ -18,44 +18,69 @@ s = Solver()
 # z3 is a SAT solver so don't need to implement a whole SAT solver
 
 # don't match together people who hate (A's group number and B's group number must be different) each other
-def no_hatred(a, b):
+def no_hatred(a, b, c):
     # if person A hates person B, it's mutually exclusive and A ^ B would be false
     # hatred can be one directional
-    s = Solver()
-    x = Bool('hate')
+    # s = Solver()
+    # x = Bool('hate')
 
-    a = Int('person a')
-    b = Int('person b')
+    # a = Int('person a')
+    # b = Int('person b')
 
-    s.add(Not(And(a, b)))
+    # s.add(Not(And(a, b)))
 
-    result = s.check() # check result
+    # result = s.check() # check result
 
-    if result == sat:
-        print("sat")
-    else:
-        print("unsat. person a and person b cannot be paired together")
-        print(s.model())
+    # if result == sat:
+    #     print("sat")
+    # else:
+    #     print("unsat. person a and person b cannot be paired together")
+    #     print(s.model())
+    for student in a['hate']:
+        if student == 'b' or student == 'c':
+            return False
+    for student in b['hate']:
+        if student == 'a' or student == 'c':
+            return False
+    for student in c['hate']:
+        if student == 'a' or student == 'b':
+            return False
+    return True
 
-def common_preferences(a_pref, b_pref):
+def common_preferences(a_pref, b_pref, c_pref):
     # if person A and person B have no topics in common, then they cannot be paired together
     s = Solver()
     common_pref = False
     # check if A and B have topics in common
-    for topic in a_pref:
-        for topic2 in b_pref:
-            if topic == topic2:
-                common_topic = True
-                break
+    for item in a_pref:
+        if item in b_pref and c_pref:
+            return True
+        
+    return False
 
-    s.add(common_topic)
 
-    result = s.check() # check result
+    #     for topic2 in b_pref:
+    #         if topic == topic2:
+    #             common_topic = True
+    #             break
 
-    if result == sat:
-        print("sat")
-    else:
-        print("unsat. person a and person b cannot be paired together")
-        print(s.model())
+    # s.add(common_topic)
 
-def common_time(a)
+    # result = s.check() # check result
+
+    # if result == sat:
+    #     print("sat")
+    # else:
+    #     print("unsat. person a and person b cannot be paired together")
+    #     print(s.model())
+
+def main():
+    # preferences = input("Enter input: ") # TODO: make this prompt more user-friendly
+    preferences = [{'name':'a', 'hate':['b','c'], 'topics':['garbage collection', 'assembly/ISA'], 'times':['Monday morning', 'Monday evening']},
+                   {'name':'b', 'hate':[], 'topics':['garbage collection'], 'times':['Tuesday evening']},
+                   {'name':'c', 'hate':[], 'topics':['networks'], 'times':['Wednesday morning']},
+                   {'name':'d', 'hate':[], 'topics':['networks','garbage collection'], 'times':['Monday morning']},
+                   {'name':'e', 'hate':[], 'topics':['networks','garbage collection'], 'times':['Monday morning']},
+                   {'name':'f', 'hate':[], 'topics':['networks'], 'times':['Friday morning']}]
+    
+    # for student in preferences:
