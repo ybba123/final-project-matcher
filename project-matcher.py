@@ -79,8 +79,8 @@ def main():
     preferences = [{'name':'a', 'hate':['b','c'], 'topics':['garbage collection', 'assembly/ISA'], 'times':['Monday morning', 'Monday evening']},
                    {'name':'b', 'hate':[], 'topics':['garbage collection'], 'times':['Tuesday evening']},
                    {'name':'c', 'hate':[], 'topics':['networks'], 'times':['Wednesday morning']},
-                   {'name':'d', 'hate':[], 'topics':['networks','garbage collection'], 'times':['Monday morning']},
-                   {'name':'e', 'hate':[], 'topics':['networks','garbage collection'], 'times':['Monday morning']},
-                   {'name':'f', 'hate':[], 'topics':['networks'], 'times':['Friday morning']}]
+                   # {'name':'d', 'hate':[], 'topics':['networks','garbage collection'], 'times':['Monday morning']},
+                   # {'name':'e', 'hate':[], 'topics':['networks','garbage collection'], 'times':['Monday morning']},
+                   # {'name':'f', 'hate':[], 'topics':['networks'], 'times':['Friday morning']}]
     
     # for student in preferences:
